@@ -3,11 +3,16 @@ package com.thc.realspr.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
 @Entity
+@EntityListeners(AuditingEntityListener.class) // For Audit
 public class Tbuser {
     @Id private String id;
     @Setter @Column(nullable = false) private String deleted; // 삭제여부
@@ -19,6 +24,12 @@ public class Tbuser {
     @Setter @Column(nullable = false) private String phone;
     @Setter @Column(nullable = false) private String mpic; // 프로필 사진
     @Setter @Column(nullable = false, length=2000000) @Lob private String content; // 본문
+
+    @CreatedDate
+    private LocalDateTime createdDate;
+
+    @LastModifiedDate
+    private LocalDateTime modifiedDate;
     protected Tbuser(){}
     private Tbuser(String username, String password, String name, String nick, String phone, String mpic, String content) {
         this.username = username;

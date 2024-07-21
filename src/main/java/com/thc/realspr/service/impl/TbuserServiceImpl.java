@@ -5,7 +5,9 @@ import com.thc.realspr.repository.TbuserRepository;
 import com.thc.realspr.service.TbuserService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -23,6 +25,7 @@ public class TbuserServiceImpl implements TbuserService {
         System.out.println(param);
         Tbuser tbuser = Tbuser.of(param.get("username") + "", param.get("password") + "");
         tbuserRepository.save(tbuser);
+
         returnMap.put("id", tbuser.getId());
         return returnMap;
     }
@@ -41,7 +44,12 @@ public class TbuserServiceImpl implements TbuserService {
         }
 
         tbuserRepository.save(tbuser);
+//        tbuserRepository.deleteAll();
+//        tbuserRepository.deleteById(param.get("id") + "");
+//        tbuserRepository.delete(tbuser);
+
         returnMap.put("id", tbuser.getId());
+        returnMap.put("updated", "complete");
         return returnMap;
     }
     public Map<String, Object> get(String id){
@@ -54,7 +62,31 @@ public class TbuserServiceImpl implements TbuserService {
         returnMap.put("name", tbuser.getName());
         returnMap.put("nick", tbuser.getNick());
         returnMap.put("phone", tbuser.getPhone());
+        returnMap.put("yeara", "is love");
+        returnMap.put("createdAt", tbuser.getCreatedDate());
+        returnMap.put("modifiedAt", tbuser.getModifiedDate());
 
         return returnMap;
+    }
+
+    public List<Map<String, Object>> getAll() {
+        List<Map<String, Object>> result = new ArrayList<>();
+//        List<Tbfeed> allFeed  = tbfeedRepository.findAll();
+        List<Tbuser> allFeed  = tbuserRepository.findAll();
+
+        for(Tbuser tbuser : allFeed) {
+            Map<String, Object> returnMap = new HashMap<String, Object>();
+            returnMap.put("id", tbuser.getId());
+            returnMap.put("username", tbuser.getUsername());
+            returnMap.put("name", tbuser.getName());
+            returnMap.put("nick", tbuser.getNick());
+            returnMap.put("phone", tbuser.getPhone());
+            returnMap.put("yeara", "is love");
+            returnMap.put("createdAt", tbuser.getCreatedDate());
+            returnMap.put("modifiedAt", tbuser.getModifiedDate());
+            result.add(returnMap);
+        }
+
+        return result;
     }
 }
