@@ -17,7 +17,7 @@ public class Tbpost {
     @Id private String id;
     @Setter @Column(nullable = false) private String deleted; // 삭제여부
     @Setter @Column(nullable = false) private String title;
-    @Setter @Column(nullable = false) private String content;
+    @Setter @Column(nullable = false, length=2000000) @Lob private String content;
     @Setter @Column(nullable = false) private String boardname;
 
     @CreatedDate
