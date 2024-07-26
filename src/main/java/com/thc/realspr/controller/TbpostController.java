@@ -21,14 +21,15 @@ public class TbpostController {
         return tbpostService.create(param);
     }
     @PutMapping("")
-    @CrossOrigin(origins = "http://localhost:3000/")
+//    @CrossOrigin(origins = "http://localhost:3000/")
+    @CrossOrigin(origins = "https://2024-summer-webcamp.netlify.app/")
     public Map<String, Object> update(@RequestBody Map<String, Object> param){
         System.out.println(param);
         return tbpostService.update(param);
     }
 
     @DeleteMapping ("/delete/{id}")
-    @CrossOrigin(origins = "http://localhost:3000/")
+    @CrossOrigin(origins = "https://2024-summer-webcamp.netlify.app/")
     public Map<String, Object> delete(@PathVariable("id") String id){
         System.out.println(id);
         return tbpostService.delete(id);
