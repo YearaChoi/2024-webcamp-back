@@ -20,7 +20,7 @@ public class RealsprApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("https://2024-summer-webcamp.netlify.app/");
+                registry.addMapping("/**").allowedOrigins("https://webcamp-yeara.llfe.jungsub.com/");
             }
         };
     }
