@@ -12,10 +12,18 @@ spring:
 #    url: jdbc:mysql://www.adapter-gwangalli.com:3306/screalspr?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
 #    username: root
 #    password: ivill0080@
-    url: jdbc:mysql://localhost:3306/board?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
-    username: root
-    password: cyr92387351
-    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#    url: jdbc:mysql://localhost:3306/board?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+#    username: root
+#    password: cyr92387351
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    url: jdbc:mariadb://walab.handong.edu:3306/p232_22200750
+    username: p232_22200750
+    password: EWieJ7
+    driver-class-name: org.mariadb.jdbc.Driver
+
+
   jpa:
     defer-datasource-initialization: true
     hibernate.ddl-auto: update
